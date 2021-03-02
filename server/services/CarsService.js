@@ -27,13 +27,43 @@ import { BadRequest } from "../utils/Errors";
 
 // export const carsService = new CarsService();
 
-class CarService { 
+// class CarService { 
+//   async find(query = {}){
+//     return await dbContext.Cars.find(query)
+//   }
+
+//   async getOne(id){
+//     return await dbContext.Cars.findById(id)
+//   }
+
+//   async delete(id){
+//     return await dbContext.Cars.findByIdAndDelete(id)
+//   }
+
+//   async create(newCar){
+//     return await dbContext.Cars.create(newCar)
+//   }
+
+//   async edit(id, body){
+//     return await dbContext.Cars.findByIdAndUpdate(id, body)
+//   }
+// }
+
+// export const carsService = new CarService();
+
+
+class CarsService {
+
   async find(query = {}){
     return await dbContext.Cars.find(query)
   }
 
   async getOne(id){
     return await dbContext.Cars.findById(id)
+  }
+
+  async edit(id, body){
+    return await dbContext.Cars.findByIdAndUpdate(id, body)
   }
 
   async delete(id){
@@ -44,9 +74,7 @@ class CarService {
     return await dbContext.Cars.create(newCar)
   }
 
-  async edit(id, body){
-    return await dbContext.Cars.findByIdAndUpdate(id, body)
-  }
+
 }
 
-export const carsService = new CarService();
+export const carsService = new CarsService();

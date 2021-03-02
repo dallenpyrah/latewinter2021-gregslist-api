@@ -55,55 +55,107 @@ import { carsService } from "../services/CarsService";
 //   }
 // }
 
-export class CarsController extends BaseController{
-    constructor(){
-      super("api/cars")
-      this.router
-      .get("", this.getAll)
-      .get("/:id", this.getOne)
-      .post("", this.create)
-      .put("/:id", this.edit)
-      .delete("/:id", this.delete)
+// export class CarsController extends BaseController{
+//     constructor(){
+//       super("api/cars")
+//       this.router
+//       .get("", this.getAll)
+//       .get("/:id", this.getOne)
+//       .post("", this.create)
+//       .put("/:id", this.edit)
+//       .delete("/:id", this.delete)
       
-    }
+//     }
 
-    async getAll(req, res, next){
-      try {
-        return res.send(await carsService.find(req.query))
-      } catch (error) {
-        next(error)
-      }
-    }
+//     async getAll(req, res, next){
+//       try {
+//         return res.send(await carsService.find(req.query))
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
 
-    async getOne(req, res, next){
-      try {
-        return res.send(await carsService.getOne(req.params.id))
-      } catch (error) {
-        next(error)
-      }
-    }
+//     async getOne(req, res, next){
+//       try {
+//         return res.send(await carsService.getOne(req.params.id))
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
 
-    async create(req, res, next){
-      try {
-        return res.send(await carsService.create(req.body))
-      } catch (error) {
-        next(error)
-      }
-    }
+//     async create(req, res, next){
+//       try {
+//         return res.send(await carsService.create(req.body))
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
 
-    async edit(req, res, next){
-      try {
-        return res.send(await carsService.edit(req.params.id, req.body))
-      } catch (error) {
-        next(error)
-      }
-    }
+//     async edit(req, res, next){
+//       try {
+//         return res.send(await carsService.edit(req.params.id, req.body))
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
 
-    async delete(req, res, next){
-      try {
-        return res.send(await carsService.delete(req.params.id))
-      } catch (error) {
-        next(error)
-      }
+//     async delete(req, res, next){
+//       try {
+//         return res.send(await carsService.delete(req.params.id))
+//       } catch (error) {
+//         next(error)
+//       }
+//     }
+// }
+
+export class CarsController extends BaseController{
+  constructor(){
+    super("api/cars")
+    this.router
+    .get("", this.getAll)
+    .post("", this.create)
+    .delete("/:id", this.delete)
+    .put("/:id", this.edit)
+    .get("/:id", this.getOne)
+  }
+
+  async getAll(req, res, next){
+    try {
+      return res.send(await carsService.find(req.query))
+    } catch (error) {
+      next(error)
     }
+  }
+
+  async getOne(req,res,next){
+    try {
+      return res.send(await carsService.getOne(req.params.id))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async delete(req, res, next){
+    try {
+      return res.send(await carsService.delete(req.params.id))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async edit(req, res, next){
+    try {
+      return res.send(await carsService.edit(req.params.id, req.body))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async create(req, res, next){
+    try {
+      return res.send(await carsService.create(req.body))
+    } catch (error) {
+      next(error)
+    }
+  }
 }
